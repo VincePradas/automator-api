@@ -2,25 +2,14 @@
     "version": 2,
     "builds": [
       {
-        "src": "api/run-script/index.js",
-        "use": "@vercel/node"
-      },
-      {
-        "src": "api/get-logs.js",
+        "src": "server.js",
         "use": "@vercel/node"
       }
     ],
     "routes": [
       {
-        "src": "/api/run-script",
-        "methods": ["POST"],
-        "dest": "api/run-script/index.js"
-      },
-      {
-        "src": "/api/get-logs",
-        "methods": ["GET"],
-        "dest": "api/get-logs.js"
+        "src": "/(.*)",
+        "dest": "server.js"
       }
     ]
   }
-  
