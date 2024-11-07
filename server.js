@@ -52,10 +52,10 @@ app.post("/", async (req, res) => {
 
 const runPuppeteerScript = async (username, password, rateVal, subjects) => {
   const options = {
-    args: chrome.args || ["--no-sandbox", "--disable-setuid-sandbox"],
+    args: ["--no-sandbox", "--disable-setuid-sandbox"],
     headless: true,
-    executablePath: await chrome.executablePath || undefined,
-  };
+    executablePath: "/usr/bin/google-chrome",
+  };  
 
   addLog("Executing Script");
   const browser = await puppeteer.launch(options);
