@@ -24,7 +24,7 @@ function addLog(message) {
 }
 
 // Main endpoint to run the script
-app.post("/run-script", async (req, res) => {
+app.post("/", async (req, res) => {
   const { username, password, rateVal, subjects } = req.body;
 
   if (!username || !password || !rateVal) {
