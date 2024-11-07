@@ -23,16 +23,6 @@ function addLog(message) {
   console.log(message); // Log to server console for debugging
 }
 
-app.get("/", (req, res) => {
-  res.send("API RUNNING");
-});
-
-// Endpoint to retrieve logs
-app.get("/get-logs", (req, res) => {
-  res.json({ logs: logMessages });
-  logMessages = []; // Clear logs after sending to avoid duplicates
-});
-
 // Main endpoint to run the script
 app.post("/run-script", async (req, res) => {
   const { username, password, rateVal, subjects } = req.body;
