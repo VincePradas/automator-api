@@ -11,11 +11,19 @@ if (process.env.AWS_LAMBDA_FUNCTION_VERSION || process.env.VERCEL) {
   puppeteer = require("puppeteer");
 }
 
+
 app.use(express.json()); // Use JSON for API requests
 app.use(express.urlencoded({ extended: true }));
 
-// Array to store logs temporarily
-let logMessages = [];
+let logMessages = []; // Make sure this is defined here or imported if shared
+
+// Route to get logs
+app.get("/fget-logs", (req, res) => {
+  res.json({ logs: logMessages });
+  logMessages = []; // Clear logs after sending to avoid duplicates
+});
+
+module.exports = app;
 
 // Helper function to add a log message
 function addLog(message) {
